@@ -11,14 +11,27 @@ pre { background: #f3f3f3; padding: 8px; border-radius: 4px; }
 </head>
 <body>
 <h1>ntshim/duckdb — database/sql tour</h1>
+<p>Engine: <a href="?engine=duckdb">DuckDB-Wasm</a> | <a href="?engine=haybarn">Haybarn-Wasm</a></p>
 <div id="out">loading…<br/></div>
 <script src="wasm_exec.js"></script>
 <script type="module">
-  import './ntshim/duckdb/duckdb-shim.js';
-  await window.ntshim.duckdb.ready;
-  const go = new Go();
-  const wasm = await WebAssembly.instantiateStreaming(fetch('app.wasm'), go.importObject);
-  go.run(wasm.instance);
+  try {
+    const engine = new URLSearchParams(location.search).get('engine') || 'duckdb';
+    if (!['duckdb', 'haybarn'].includes(engine)) throw new Error('Unknown engine: ' + engine);
+    await import(engine === 'haybarn'
+      ? './ntshim/duckdb/haybarn-shim.js'
+      : './ntshim/duckdb/duckdb-shim.js');
+    await window.ntshim.duckdb.ready;
+    const go = new Go();
+    const wasm = await WebAssembly.instantiateStreaming(fetch('app.wasm'), go.importObject);
+    go.run(wasm.instance).catch(showError);
+  } catch (err) {
+    showError(err);
+  }
+  function showError(err) {
+    document.getElementById('out').textContent = 'ERROR: ' + err.message;
+    console.error(err);
+  }
 </script>
 </body>
 </html>

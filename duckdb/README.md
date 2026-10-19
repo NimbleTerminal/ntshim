@@ -1,6 +1,71 @@
 # ntshim/duckdb
 
-A `database/sql` driver named `"duckdb"` plus a native Arrow API, both wrapping DuckDB-Wasm running in a browser Web Worker.
+A `database/sql` driver named `"duckdb"` plus a native Arrow API, wrapping either
+DuckDB-Wasm or Haybarn-Wasm in a browser Web Worker.
+
+## Choose an engine
+
+Install the bridge assets with `go tool ntshim-assets <web-dir> --shim=duckdb`.
+The page chooses one engine entry point before starting Go/WASM:
+
+```javascript
+// Upstream DuckDB-Wasm (default):
+import './ntshim/duckdb/duckdb-shim.js';
+await window.ntshim.duckdb.ready;
+```
+
+For Haybarn, replace that import with:
+
+```javascript
+import './ntshim/duckdb/haybarn-shim.js';
+await window.ntshim.duckdb.ready;
+```
+
+Both install `window.ntshim.duckdb`. The Go import, `sql.Open("duckdb", dsn)`,
+and native `duckdb.Open` / `QueryArrow` APIs stay the same. Only the selected
+engine is downloaded. Load one entry point per page; importing both is an error.
+`window.ntshim.duckdb.engine` reports `"duckdb"` or `"haybarn"`.
+
+DuckDB-Wasm is pinned to **1.32.0**; Haybarn-Wasm to **1.5.6-rc6**, a release
+candidate. Haybarn uses its own extension repository and signing keys. Its
+small JavaScript module is shipped with the bridge; worker and WASM files load
+from unpkg, since its package exceeds jsDelivr's size limit. Both engines use
+Apache Arrow **17.0.0** for browser queries and IPC serialization.
+Both entry points select the single-threaded MVP or exception-handling bundle
+according to browser support.
+
+The [SQL](../examples/duckdb-sql) and [Arrow](../examples/duckdb-arrow) examples
+run with either engine: open the page with `?engine=haybarn` to try Haybarn,
+or `?engine=duckdb` for the default.
+
+### Haybarn extension prefetch
+
+Haybarn optionally downloads, hashes and compiles extensions ahead of `LOAD`:
+
+```javascript
+import './ntshim/duckdb/haybarn-shim.js';
+await window.ntshim.duckdb.ready;
+await window.ntshim.duckdb.prefetchExtensions(['spatial']);
+// Start Go/WASM. Its SQL can now run LOAD spatial.
+```
+
+Prefetch does not load extensions. Call it once during setup, before launching
+the application's queries, and after any `INSTALL ... FROM community` or
+repository settings that affect extension URLs. Include transitive extension
+dependencies (for example, `iceberg` also needs `avro` and `parquet`). Downloads
+that fail fall back to normal `LOAD` behavior. This method is available only
+on the Haybarn entry point; DuckDB keeps its normal extension-loading behavior.
+See [Query.Farm's startup analysis](https://query.farm/blog/duckdb-wasm-startup-time/)
+for the upstream behavior and measurements.
+
+## Validation
+
+Verified on 2026-10-19 in Chrome using the actual Go/WASM SQL and Arrow
+examples with both engines. Browser checks also passed for parameterized
+Arrow IPC queries, file-buffer and file-URL registration, and Haybarn's
+`prefetchExtensions(['autocomplete'])` followed by `LOAD autocomplete` and
+an extension query. Bridge lifecycle and error handling are covered by
+`node --test web/duckdb/bridge.test.mjs`.
 
 ## DSN format
 
@@ -83,4 +148,5 @@ Every method blocks the calling goroutine on a JS Promise. This is safe inside `
 - No streaming `send()` path; all results are fully materialized via `query()` before returning.
 - `context.Context` is accepted but cancellation is not implemented.
 - `--vendored` asset-tool mode is a stub; use `--cdn` for production.
+- Haybarn is CDN-only; `--vendored` does not install its entry point.
 - `uint64`/`UBIGINT` values above `math.MaxInt64` return an error rather than wrapping silently (`driver.Value` cannot carry `uint64`); lossless large-`UBIGINT` support is a v0.2 task.

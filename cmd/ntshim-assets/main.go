@@ -25,7 +25,7 @@ func main() {
 		vendored bool
 	)
 	flag.StringSliceVar(&shims, "shim", nil, "Shim to install (repeat for multiple). Required.")
-	flag.BoolVar(&cdn, "cdn", true, "Load DuckDB-Wasm + apache-arrow from JSDelivr (default)")
+	flag.BoolVar(&cdn, "cdn", true, "Load browser dependencies from CDN (default)")
 	flag.BoolVar(&vendored, "vendored", false, "Copy pinned bundles into <web-dir>/ntshim/<shim>/")
 	flag.Parse()
 
@@ -77,6 +77,9 @@ func installShim(shim, webDir string, vendored bool) error {
 			if !vendored && rel == "vendored" {
 				return fs.SkipDir
 			}
+			if vendored && rel == "haybarn" {
+				return fs.SkipDir // Haybarn currently requires CDN worker/WASM files.
+			}
 			return os.MkdirAll(filepath.Join(dstRoot, rel), 0o755)
 		}
 		// In --cdn mode, skip files under a "vendored/" subdirectory.
@@ -87,6 +90,9 @@ func installShim(shim, webDir string, vendored bool) error {
 		//   --cdn:      write duckdb-shim.js as-is; skip duckdb-shim-vendored.js.
 		//   --vendored: skip duckdb-shim.js (CDN bridge); write duckdb-shim-vendored.js
 		//               AS duckdb-shim.js so consumer HTML needs no changes.
+		if rel == "haybarn-shim.js" && vendored {
+			return nil // Haybarn is CDN-only; do not imply an offline entry point.
+		}
 		if rel == "duckdb-shim.js" && vendored {
 			return nil // skip CDN bridge in vendored mode
 		}

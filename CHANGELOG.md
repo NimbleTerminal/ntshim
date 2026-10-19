@@ -12,6 +12,10 @@ v0.5.0 below belong to the original booba-shim module and repository.
    [migration guide](./README.md#migrating-from-booba-shim).
  * Update the vendored flint-ntcharts compiler to v0.3.1. The browser bundle
    is unchanged from v0.3.0; retain the local `ntshim` namespace patch.
+ * Add optional Haybarn-Wasm 1.5.6-rc6 support alongside DuckDB-Wasm. Choose
+   `haybarn-shim.js` or the default `duckdb-shim.js` with the same Go SQL and
+   Arrow APIs. Haybarn supports setup-time extension prefetch; both database
+   examples accept `?engine=haybarn`.
 
 ## `v0.5.0` - 2026-10-11
 

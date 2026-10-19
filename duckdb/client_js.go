@@ -12,7 +12,7 @@ import (
 	"github.com/apache/arrow-go/v18/arrow/ipc"
 )
 
-// Client is a native (non-database/sql) handle to a DuckDB-Wasm connection.
+// Client is a native (non-database/sql) handle to a DuckDB-Wasm or Haybarn connection.
 // It is safe to use from one goroutine at a time; concurrent calls share
 // the underlying JS connection and must be serialized by the caller.
 type Client struct {

@@ -31,3 +31,5 @@ jobs:
         run: |
           go tool ntshim-assets examples/flintchart-compile --shim=flintchart
           node examples/flintchart-compile/smoke.mjs
+      - name: DuckDB and Haybarn bridge tests
+        run: node --test web/duckdb/bridge.test.mjs

@@ -1,0 +1,8 @@
+source: npm @haybarn/haybarn-wasm@1.5.6-rc6
+url: https://unpkg.com/@haybarn/haybarn-wasm@1.5.6-rc6/dist/duckdb-browser.mjs
+commit: 61ace22d319eea95816288a54f3954285fa42b3c
+upstream-sha256: c596d2e894fda44da5ac9a41eb0f027649f00f3d7b147ed5cfe28d6ecf49162d
+patch: resolve both bare apache-arrow imports to https://cdn.jsdelivr.net/npm/apache-arrow@17.0.0/+esm
+sha256: 77270fa0f8d2c7b509ba0691cb5d090b5a05c1d0e0cc11769616bf084bcaca91
+bytes: 36851
+license: MIT (see LICENSE, from the source commit above)

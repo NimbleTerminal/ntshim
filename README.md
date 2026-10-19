@@ -6,7 +6,7 @@ Browser shims that let Go-WASM TUIs hosted by [go-booba](https://github.com/Nimb
 
 | Subpackage | What it does |
 |---|---|
-| [`ntshim/duckdb`](./duckdb) | DuckDB-Wasm via `database/sql` driver + native Arrow API |
+| [`ntshim/duckdb`](./duckdb) | DuckDB-Wasm or Haybarn-Wasm via `database/sql` driver + native Arrow API |
 | [`ntshim/pdfium`](./pdfium) | PDF rasterization to `*image.RGBA` via PDFium-Wasm |
 | [`ntshim/flintchart`](./flintchart) | Compile a flint `ChartAssemblyInput` into an ntcharts render envelope via a vendored flint-chart bundle |
 | [`ntshim/audio`](./audio) | Play mono/stereo int16 PCM through Web Audio, with resampling and backpressure |
@@ -24,6 +24,9 @@ go mod edit -tool=nimbleterminal.dev/ntshim/cmd/ntshim-assets
 Then run `go tool ntshim-assets <web-dir> --shim=duckdb`
 (or `--shim=pdfium` or `--shim=flintchart`) to populate your HTML directory.
 Audio needs no browser assets; `--shim=audio` is accepted and writes nothing.
+For Haybarn, use the same `--shim=duckdb` assets and import
+`ntshim/duckdb/haybarn-shim.js` instead of `duckdb-shim.js` in the page.
+See [engine selection and extension prefetch](./duckdb/README.md#choose-an-engine).
 
 ## Migrating from booba-shim
 
@@ -134,6 +137,7 @@ The DuckDB `--vendored` bridge remains a stub — it embeds the upstream bundles
 ### Pinned upstream versions
 
 - `@duckdb/duckdb-wasm@1.32.0` (duckdb shim; tracked in `web/duckdb/duckdb-shim.js`)
+- `@haybarn/haybarn-wasm@1.5.6-rc6` (optional DuckDB-compatible engine; tracked in `web/duckdb/haybarn-shim.js`)
 - `apache-arrow@17.0.0` (duckdb shim)
 - `@embedpdf/pdfium@2.15.1` (pdfium shim; tracked in `web/pdfium/pdfium-shim.js`)
 - `flint-ntcharts@0.3.1` with `flint-chart@0.5.1` (flintchart shim; vendored, not CDN-fetched — tracked in `web/flintchart/PROVENANCE.txt`)

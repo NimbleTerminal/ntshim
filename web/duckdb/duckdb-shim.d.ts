@@ -13,7 +13,10 @@ declare global {
 }
 
 export interface NTShimDuckDB {
-    /** Resolves once the DuckDB-Wasm worker is up and ready for open(). */
+    /** The engine chosen by the page's entry point. */
+    readonly engine: 'duckdb' | 'haybarn';
+
+    /** Resolves once the selected engine's worker is ready for open(). */
     ready: Promise<void>;
 
     /** Opens a DuckDB connection from a DSN ("path?key=val" or ":memory:").
@@ -35,6 +38,10 @@ export interface NTShimDuckDB {
 
     /** Registers an in-memory buffer as a virtual file. */
     registerFileBuffer(name: string, bytes: Uint8Array): Promise<void>;
+
+    /** Haybarn only. Prefetch extension downloads before LOAD; does not load
+     *  them. Call once during setup, after any repository configuration. */
+    prefetchExtensions?(names: string[]): Promise<void>;
 }
 
 export {};
