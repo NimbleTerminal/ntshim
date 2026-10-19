@@ -1,6 +1,6 @@
 source: https://github.com/NimbleMarkets/flint-ntcharts
-tag: v0.3.0
-commit: 314e878595a5b6e1a937c1d225a8ac2ee2e88ae2
+tag: v0.3.1
+commit: b37ed50c4fcf15274560ad8aadf95664b68274f7
 entry: js/src/entry-browser.ts
 build: make browser-shim (esbuild 0.28.1) in a clean clone of the tag
 flint-chart: 0.5.1

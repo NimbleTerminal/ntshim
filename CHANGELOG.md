@@ -10,6 +10,8 @@ v0.5.0 below belong to the original booba-shim module and repository.
    Update imports, use `go tool ntshim-assets`, and switch page assets to
    `ntshim/` and the browser namespace to `window.ntshim`. See the
    [migration guide](./README.md#migrating-from-booba-shim).
+ * Update the vendored flint-ntcharts compiler to v0.3.1. The browser bundle
+   is unchanged from v0.3.0; retain the local `ntshim` namespace patch.
 
 ## `v0.5.0` - 2026-10-11
 

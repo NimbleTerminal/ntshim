@@ -136,7 +136,7 @@ The DuckDB `--vendored` bridge remains a stub — it embeds the upstream bundles
 - `@duckdb/duckdb-wasm@1.32.0` (duckdb shim; tracked in `web/duckdb/duckdb-shim.js`)
 - `apache-arrow@17.0.0` (duckdb shim)
 - `@embedpdf/pdfium@2.15.1` (pdfium shim; tracked in `web/pdfium/pdfium-shim.js`)
-- `flint-ntcharts@0.3.0` with `flint-chart@0.5.1` (flintchart shim; vendored, not CDN-fetched — tracked in `web/flintchart/PROVENANCE.txt`)
+- `flint-ntcharts@0.3.1` with `flint-chart@0.5.1` (flintchart shim; vendored, not CDN-fetched — tracked in `web/flintchart/PROVENANCE.txt`)
 
 ## Audio
 
