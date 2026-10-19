@@ -13,11 +13,10 @@ Browser shims that let Go-WASM TUIs hosted by [go-booba](https://github.com/Nimb
 
 ## Install
 
-Once the migration is published to the new repository, install from `main`
-until an ntshim release is tagged:
+With Go 1.25 or newer:
 
 ```sh
-go get nimbleterminal.dev/ntshim@main
+go get nimbleterminal.dev/ntshim@v0.6.0
 go mod edit -tool=nimbleterminal.dev/ntshim/cmd/ntshim-assets
 ```
 

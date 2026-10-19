@@ -3,7 +3,7 @@
 All notable changes to ntshim are documented in this file. Releases through
 v0.5.0 below belong to the original booba-shim module and repository.
 
-## Unreleased
+## `v0.6.0` - 2026-10-19
 
  * Rename booba-shim to ntshim, using the Go module `nimbleterminal.dev/ntshim`
    and repository [`NimbleTerminal/ntshim`](https://github.com/NimbleTerminal/ntshim).
