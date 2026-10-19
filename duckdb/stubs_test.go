@@ -8,7 +8,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/NimbleMarkets/booba-shim/duckdb"
+	"nimbleterminal.dev/ntshim/duckdb"
 )
 
 func TestSqlOpenReturnsErrNonJSPlatform(t *testing.T) {

@@ -1,7 +1,7 @@
 //go:build js
 
 // Example flintchart-compile: compile a flint chart spec in the browser via
-// the booba-shim flintchart bridge and display the resulting ntcharts-spec
+// the ntshim flintchart bridge and display the resulting ntcharts-spec
 // envelope. Rendering the spec with ntcharts in a browser TUI is go-booba's
 // domain; this example proves the compile bridge alone.
 package main
@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"syscall/js"
 
-	"github.com/NimbleMarkets/booba-shim/flintchart"
+	"nimbleterminal.dev/ntshim/flintchart"
 )
 
 const sampleInput = `{

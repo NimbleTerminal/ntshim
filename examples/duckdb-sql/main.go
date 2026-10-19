@@ -8,7 +8,7 @@ import (
 	"strings"
 	"syscall/js"
 
-	_ "github.com/NimbleMarkets/booba-shim/duckdb"
+	_ "nimbleterminal.dev/ntshim/duckdb"
 )
 
 func main() {

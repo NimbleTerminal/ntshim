@@ -1,18 +1,18 @@
-// booba-shim/pdfium — TypeScript types for the JS bridge.
+// ntshim/pdfium — TypeScript types for the JS bridge.
 
 declare global {
     interface Window {
-        boobaShim?: BoobaShim;
+        ntshim?: NTShim;
     }
 
-    /** Declaration-merged across every booba-shim bridge type file —
+    /** Declaration-merged across every ntshim bridge type file —
      *  each shim contributes its own optional member. */
-    interface BoobaShim {
-        pdfium?: BoobaShimPDFium;
+    interface NTShim {
+        pdfium?: NTShimPDFium;
     }
 }
 
-export interface BoobaShimPDFium {
+export interface NTShimPDFium {
     /** Resolves once the PDFium WebAssembly module is initialized. */
     ready: Promise<void>;
 

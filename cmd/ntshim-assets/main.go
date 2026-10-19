@@ -1,11 +1,11 @@
-// Command booba-shim-assets copies the JS-side bridge files for one or
-// more booba-shim subpackages into a target site directory.
+// Command ntshim-assets copies the JS-side bridge files for one or
+// more ntshim subpackages into a target site directory.
 //
 // Usage:
 //
-//	booba-shim-assets <web-dir> --shim=duckdb [--shim=…] [--cdn|--vendored]
+//	ntshim-assets <web-dir> --shim=duckdb [--shim=…] [--cdn|--vendored]
 //
-// Outputs land under <web-dir>/booba-shim/<shim>/.
+// Outputs land under <web-dir>/ntshim/<shim>/.
 package main
 
 import (
@@ -26,11 +26,11 @@ func main() {
 	)
 	flag.StringSliceVar(&shims, "shim", nil, "Shim to install (repeat for multiple). Required.")
 	flag.BoolVar(&cdn, "cdn", true, "Load DuckDB-Wasm + apache-arrow from JSDelivr (default)")
-	flag.BoolVar(&vendored, "vendored", false, "Copy pinned bundles into <web-dir>/booba-shim/<shim>/")
+	flag.BoolVar(&vendored, "vendored", false, "Copy pinned bundles into <web-dir>/ntshim/<shim>/")
 	flag.Parse()
 
 	if flag.NArg() != 1 {
-		fmt.Fprintln(os.Stderr, "usage: booba-shim-assets <web-dir> --shim=NAME [--shim=NAME ...]")
+		fmt.Fprintln(os.Stderr, "usage: ntshim-assets <web-dir> --shim=NAME [--shim=NAME ...]")
 		os.Exit(2)
 	}
 	if len(shims) == 0 {
@@ -60,7 +60,7 @@ func installShim(shim, webDir string, vendored bool) error {
 	if _, err := fs.Stat(shimAssets, srcRoot); err != nil {
 		return fmt.Errorf("unknown shim %q (no embedded assets under %s)", shim, srcRoot)
 	}
-	dstRoot := filepath.Join(webDir, "booba-shim", shim)
+	dstRoot := filepath.Join(webDir, "ntshim", shim)
 	if err := os.MkdirAll(dstRoot, 0o755); err != nil {
 		return err
 	}

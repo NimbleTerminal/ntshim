@@ -1,18 +1,18 @@
-// booba-shim/flintchart — TypeScript types for the JS bridge.
+// ntshim/flintchart — TypeScript types for the JS bridge.
 
 declare global {
     interface Window {
-        boobaShim?: BoobaShim;
+        ntshim?: NTShim;
     }
 
-    /** Declaration-merged across every booba-shim bridge type file —
+    /** Declaration-merged across every ntshim bridge type file —
      *  each shim contributes its own optional member. */
-    interface BoobaShim {
-        flintchart?: BoobaShimFlintchart;
+    interface NTShim {
+        flintchart?: NTShimFlintchart;
     }
 }
 
-export interface BoobaShimFlintchart {
+export interface NTShimFlintchart {
     /** Resolves once the bundle is initialized. The bundle is fully
      *  synchronous (no wasm/network fetch), so this is already-resolved. */
     ready: Promise<void>;

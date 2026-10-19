@@ -1,4 +1,4 @@
-// booba-shim/duckdb — JS bridge (vendored variant) — STUB
+// ntshim/duckdb — JS bridge (vendored variant) — STUB
 //
 // VENDORED MODE IS NOT SUPPORTED IN v0.1.0.
 //
@@ -25,27 +25,27 @@
 //
 // USE --cdn (the default) for production. It is the verified working path.
 
-(window.boobaShim = window.boobaShim || {});
-window.boobaShim.duckdb = {
+(window.ntshim = window.ntshim || {});
+window.ntshim.duckdb = {
     open: async () => {
         throw new Error(
-            'booba-shim/duckdb: vendored mode is a v0.1.0 stub. ' +
+            'ntshim/duckdb: vendored mode is a v0.1.0 stub. ' +
             'Use --cdn (the default) for production. ' +
             'See web/duckdb/duckdb-shim-vendored.js for details.'
         );
     },
-    close: async () => { throw new Error('booba-shim/duckdb: vendored mode is a v0.1.0 stub. Use --cdn.'); },
+    close: async () => { throw new Error('ntshim/duckdb: vendored mode is a v0.1.0 stub. Use --cdn.'); },
     query: async () => {
-        throw new Error('booba-shim/duckdb: vendored mode stub — use --cdn');
+        throw new Error('ntshim/duckdb: vendored mode stub — use --cdn');
     },
     exec: async () => {
-        throw new Error('booba-shim/duckdb: vendored mode stub — use --cdn');
+        throw new Error('ntshim/duckdb: vendored mode stub — use --cdn');
     },
     registerFileURL: async () => {
-        throw new Error('booba-shim/duckdb: vendored mode stub — use --cdn');
+        throw new Error('ntshim/duckdb: vendored mode stub — use --cdn');
     },
     registerFileBuffer: async () => {
-        throw new Error('booba-shim/duckdb: vendored mode stub — use --cdn');
+        throw new Error('ntshim/duckdb: vendored mode stub — use --cdn');
     },
     ready: Promise.resolve(),
 };

@@ -15,11 +15,11 @@ import (
 //
 //	//go:build js
 //	package data
-//	import _ "github.com/NimbleMarkets/booba-shim/duckdb"
+//	import _ "nimbleterminal.dev/ntshim/duckdb"
 //
 // and still run host-side `go test ./...` without panicking on missing
 // JS globals.
-var ErrNonJSPlatform = errors.New("booba-shim/duckdb: only usable under GOOS=js")
+var ErrNonJSPlatform = errors.New("ntshim/duckdb: only usable under GOOS=js")
 
 // Error is the typed error returned for failures originating in the JS
 // bridge (DuckDB-Wasm errors, connection issues, etc.).

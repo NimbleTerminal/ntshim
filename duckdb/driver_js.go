@@ -18,7 +18,7 @@ type jsDriver struct{}
 //	<path>?key=val&key=val
 //
 // where <path> is either ":memory:" or a virtual filename previously
-// registered via boobaShim.duckdb.registerFileURL / registerFileBuffer.
+// registered via ntshim.duckdb.registerFileURL / registerFileBuffer.
 func (jsDriver) Open(dsn string) (driver.Conn, error) {
 	res, err := awaitPromise(bridge().Call("open", dsn))
 	if err != nil {

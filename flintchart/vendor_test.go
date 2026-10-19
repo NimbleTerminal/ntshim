@@ -19,7 +19,7 @@ type pair struct {
 
 var vendoredPairs = []pair{
 	{bundle: "../web/flintchart/flintchart-shim.js", provenance: "../web/flintchart/PROVENANCE.txt"},
-	{bundle: "../cmd/booba-shim-assets/assets/flintchart/flintchart-shim.js", provenance: "../cmd/booba-shim-assets/assets/flintchart/PROVENANCE.txt"},
+	{bundle: "../cmd/ntshim-assets/assets/flintchart/flintchart-shim.js", provenance: "../cmd/ntshim-assets/assets/flintchart/PROVENANCE.txt"},
 }
 
 // provenanceSHA256 extracts the value of the "sha256:" line from a
@@ -37,10 +37,10 @@ func provenanceSHA256(t *testing.T, raw []byte) string {
 
 // TestVendoredBundlesMatchProvenance guards against the two vendored copies
 // of the flint-ntcharts browser shim (web/flintchart and
-// cmd/booba-shim-assets/assets/flintchart) silently drifting apart, or
+// cmd/ntshim-assets/assets/flintchart) silently drifting apart, or
 // drifting from the sha256 recorded in their own PROVENANCE.txt — either of
-// which would mean the shipped bundle no longer matches what was reviewed
-// and vendored from flint-ntcharts.
+// which would mean the shipped bundle no longer matches the reviewed
+// flint-ntcharts bundle with the recorded local namespace patch.
 func TestVendoredBundlesMatchProvenance(t *testing.T) {
 	var (
 		bundleShas      [2]string

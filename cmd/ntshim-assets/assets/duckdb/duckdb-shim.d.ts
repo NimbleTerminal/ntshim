@@ -1,18 +1,18 @@
-// booba-shim/duckdb — TypeScript types for the JS bridge.
+// ntshim/duckdb — TypeScript types for the JS bridge.
 
 declare global {
     interface Window {
-        boobaShim?: BoobaShim;
+        ntshim?: NTShim;
     }
 
-    /** Declaration-merged across every booba-shim bridge type file —
+    /** Declaration-merged across every ntshim bridge type file —
      *  each shim contributes its own optional member. */
-    interface BoobaShim {
-        duckdb?: BoobaShimDuckDB;
+    interface NTShim {
+        duckdb?: NTShimDuckDB;
     }
 }
 
-export interface BoobaShimDuckDB {
+export interface NTShimDuckDB {
     /** Resolves once the DuckDB-Wasm worker is up and ready for open(). */
     ready: Promise<void>;
 

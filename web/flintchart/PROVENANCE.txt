@@ -4,5 +4,7 @@ commit: 314e878595a5b6e1a937c1d225a8ac2ee2e88ae2
 entry: js/src/entry-browser.ts
 build: make browser-shim (esbuild 0.28.1) in a clean clone of the tag
 flint-chart: 0.5.1
-sha256: 8a6fa749f57527aaa5849ec5dc5c018a99c3b996738c97910ff62112006aa676
-bytes: 734208
+upstream-sha256: 8a6fa749f57527aaa5849ec5dc5c018a99c3b996738c97910ff62112006aa676
+patch: replace globalThis.boobaShim with globalThis.ntshim in the browser entry point
+sha256: 1ea0c3afd44b1c71aa66075e7b3eb15106a687d8c53df3cc09b829a32647181f
+bytes: 734202

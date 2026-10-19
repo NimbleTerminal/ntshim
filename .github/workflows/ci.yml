@@ -13,6 +13,9 @@ jobs:
       - uses: actions/setup-go@v6
         with:
           go-version-file: go.mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - name: Host-platform tests
         run: go test ./...
       - name: GOOS=js GOARCH=wasm build
@@ -22,4 +25,9 @@ jobs:
           cd examples/duckdb-sql   && GOOS=js GOARCH=wasm go build -o app.wasm .
           cd ../duckdb-arrow       && GOOS=js GOARCH=wasm go build -o app.wasm .
           cd ../pdfium-render      && GOOS=js GOARCH=wasm go build -o app.wasm .
+          cd ../flintchart-compile && GOOS=js GOARCH=wasm go build -o app.wasm .
           cd ../audio              && GOOS=js GOARCH=wasm go build -o app.wasm .
+      - name: Installed flintchart bridge smoke test
+        run: |
+          go tool ntshim-assets examples/flintchart-compile --shim=flintchart
+          node examples/flintchart-compile/smoke.mjs

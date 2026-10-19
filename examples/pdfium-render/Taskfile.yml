@@ -4,7 +4,7 @@ tasks:
     cmds:
       - GOOS=js GOARCH=wasm go build -o app.wasm .
       - cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" .
-      - go tool booba-shim-assets . --shim=pdfium
+      - go tool ntshim-assets . --shim=pdfium
   serve:
     deps: [build]
     cmds:
@@ -12,4 +12,4 @@ tasks:
       - python3 -m http.server 8000
   clean:
     cmds:
-      - rm -rf booba-shim app.wasm wasm_exec.js
+      - rm -rf ntshim app.wasm wasm_exec.js

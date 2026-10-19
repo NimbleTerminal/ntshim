@@ -1,4 +1,4 @@
-// Package pdfium is a booba-shim that exposes upstream @embedpdf/pdfium
+// Package pdfium is a ntshim that exposes upstream @embedpdf/pdfium
 // (a PDFium WebAssembly build) to Go-WASM programs as a Document type
 // that loads PDFs from memory and rasterizes pages to *image.RGBA.
 //
@@ -13,7 +13,7 @@
 // On any other GOOS, every public entry point returns ErrNonJSPlatform
 // so host-side test binaries can import the package without panicking.
 //
-// The page must load booba-shim/pdfium/pdfium-shim.js (via go tool
-// booba-shim-assets) before the WASM main runs; otherwise Load returns
+// The page must load ntshim/pdfium/pdfium-shim.js (via go tool
+// ntshim-assets) before the WASM main runs; otherwise Load returns
 // ErrBridgeMissing.
 package pdfium

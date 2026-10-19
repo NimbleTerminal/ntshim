@@ -1,0 +1,2 @@
+These checked-in asset bundles mirror web/<shim>/ and are embedded at build time.
+Update both copies together; flintchart also records checksums in PROVENANCE.txt.

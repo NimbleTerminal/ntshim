@@ -1,6 +1,15 @@
-# `booba-shim` CHANGELOG
+# `ntshim` CHANGELOG
 
-All notable changes to booba-shim are documented in this file.
+All notable changes to ntshim are documented in this file. Releases through
+v0.5.0 below belong to the original booba-shim module and repository.
+
+## Unreleased
+
+ * Rename booba-shim to ntshim, using the Go module `nimbleterminal.dev/ntshim`
+   and repository [`NimbleTerminal/ntshim`](https://github.com/NimbleTerminal/ntshim).
+   Update imports, use `go tool ntshim-assets`, and switch page assets to
+   `ntshim/` and the browser namespace to `window.ntshim`. See the
+   [migration guide](./README.md#migrating-from-booba-shim).
 
 ## `v0.5.0` - 2026-10-11
 

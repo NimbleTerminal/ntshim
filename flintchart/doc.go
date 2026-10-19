@@ -1,4 +1,4 @@
-// Package flintchart is a booba-shim that exposes the vendored
+// Package flintchart is a ntshim that exposes the vendored
 // flint-ntcharts browser bundle (a compiler from flint ChartAssemblyInput
 // JSON to an ntcharts render envelope) to Go-WASM programs.
 //
@@ -18,7 +18,7 @@
 // On any other GOOS, every public entry point returns ErrNonJSPlatform
 // so host-side test binaries can import the package without panicking.
 //
-// The page must load booba-shim/flintchart/flintchart-shim.js (via
-// go tool booba-shim-assets) before the WASM main runs; otherwise
+// The page must load ntshim/flintchart/flintchart-shim.js (via
+// go tool ntshim-assets) before the WASM main runs; otherwise
 // Compile and Version return ErrBridgeMissing.
 package flintchart

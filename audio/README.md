@@ -4,7 +4,7 @@ PCM playback through Web Audio for Go `js/wasm`, with no page JavaScript or
 external dependency.
 
 ```go
-import "github.com/NimbleMarkets/booba-shim/audio"
+import "nimbleterminal.dev/ntshim/audio"
 
 p, err := audio.New(audio.Options{})
 if err != nil {

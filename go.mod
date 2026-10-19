@@ -1,8 +1,8 @@
-module github.com/NimbleMarkets/booba-shim
+module nimbleterminal.dev/ntshim
 
 go 1.25.0
 
-tool github.com/NimbleMarkets/booba-shim/cmd/booba-shim-assets
+tool nimbleterminal.dev/ntshim/cmd/ntshim-assets
 
 require (
 	github.com/apache/arrow-go/v18 v18.6.0

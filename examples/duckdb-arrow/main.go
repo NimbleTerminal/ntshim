@@ -8,7 +8,7 @@ import (
 	"strings"
 	"syscall/js"
 
-	"github.com/NimbleMarkets/booba-shim/duckdb"
+	"nimbleterminal.dev/ntshim/duckdb"
 	"github.com/apache/arrow-go/v18/arrow/array"
 )
 

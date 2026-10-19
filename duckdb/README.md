@@ -1,4 +1,4 @@
-# booba-shim/duckdb
+# ntshim/duckdb
 
 A `database/sql` driver named `"duckdb"` plus a native Arrow API, both wrapping DuckDB-Wasm running in a browser Web Worker.
 
@@ -22,11 +22,11 @@ Before calling `sql.Open`, the page (or Go-side code via `syscall/js`) must pre-
 
 ```javascript
 // Register a file from a URL (lazy-loaded on first access)
-await boobaShim.duckdb.registerFileURL('my-file.db', '/path/to/file.db');
+await ntshim.duckdb.registerFileURL('my-file.db', '/path/to/file.db');
 
 // Register a file from bytes (immediate)
 const bytes = new Uint8Array([/* ... */]);
-await boobaShim.duckdb.registerFileBuffer('data.csv', bytes);
+await ntshim.duckdb.registerFileBuffer('data.csv', bytes);
 ```
 
 **From Go (inside a WASM module):**
@@ -34,7 +34,7 @@ await boobaShim.duckdb.registerFileBuffer('data.csv', bytes);
 ```go
 import "syscall/js"
 
-js.Global().Get("boobaShim").Get("duckdb").Call("registerFileURL", "my-file.db", "/path/to/file.db")
+js.Global().Get("ntshim").Get("duckdb").Call("registerFileURL", "my-file.db", "/path/to/file.db")
 ```
 
 Then open the connection:

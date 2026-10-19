@@ -1,14 +1,14 @@
-// booba-shim/pdfium — JS bridge file
+// ntshim/pdfium — JS bridge file
 //
 // Loaded by consumer pages before their Go-WASM main runs. Sets
-// window.boobaShim.pdfium with the API the Go side expects. Renders
+// window.ntshim.pdfium with the API the Go side expects. Renders
 // PDF pages to packed RGBA buffers via @embedpdf/pdfium.
 //
 // Ref: https://www.embedpdf.com/docs/pdfium
 
 import { init as initPDFium } from 'https://cdn.jsdelivr.net/npm/@embedpdf/pdfium@2.15.1/+esm';
 
-const NAMESPACE = (window.boobaShim = window.boobaShim || {});
+const NAMESPACE = (window.ntshim = window.ntshim || {});
 
 // Render-flags bitfield. FPDF_REVERSE_BYTE_ORDER (0x10) makes pdfium
 // emit RGBA byte order directly, sidestepping a JS-side byte swap.
@@ -53,7 +53,7 @@ function getDoc(handle) {
 }
 
 async function loadDocument(uint8) {
-    if (!wrapped) throw new Error('pdfium: bridge not bootstrapped (await boobaShim.pdfium.ready first)');
+    if (!wrapped) throw new Error('pdfium: bridge not bootstrapped (await ntshim.pdfium.ready first)');
     const { pdfium, FPDF_LoadMemDocument64 } = wrapped;
     const size = uint8.byteLength;
     // Copy bytes into pdfium's wasm heap. The buffer must stay alive

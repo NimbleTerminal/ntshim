@@ -2,6 +2,6 @@
 .DS_Store
 bin/
 *.wasm
-!cmd/booba-shim-assets/assets/**/*.wasm
+!cmd/ntshim-assets/assets/**/*.wasm
 node_modules/
 .claude/

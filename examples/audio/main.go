@@ -7,7 +7,7 @@ import (
 	"math"
 	"syscall/js"
 
-	"github.com/NimbleMarkets/booba-shim/audio"
+	"nimbleterminal.dev/ntshim/audio"
 )
 
 // The controls are created by Go, so this also runs on an unmodified Booba

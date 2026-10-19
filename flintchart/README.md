@@ -1,4 +1,4 @@
-# booba-shim/flintchart
+# ntshim/flintchart
 
 Compile a flint `ChartAssemblyInput` (JSON) into an ntcharts render
 envelope in Go-WASM programs, via the vendored
@@ -26,7 +26,7 @@ v, _ := flintchart.Version() // "flint-ntcharts flint-chart@0.5.1"
 ```html
 <script src="wasm_exec.js"></script>
 <script type="module">
-  import './booba-shim/flintchart/flintchart-shim.js';
+  import './ntshim/flintchart/flintchart-shim.js';
   const go = new Go();
   const wasm = await WebAssembly.instantiateStreaming(fetch('app.wasm'), go.importObject);
   go.run(wasm.instance);
@@ -38,7 +38,7 @@ dependency — its `ready` promise is already resolved by the time it
 loads, but the Go side awaits it anyway on first `Compile`/`Version`
 call, for symmetry with pdfium/duckdb.
 
-**Assets:** `go tool booba-shim-assets <web-dir> --shim=flintchart`
+**Assets:** `go tool ntshim-assets <web-dir> --shim=flintchart`
 
 **Supported chart types:** whatever the vendored flint-ntcharts bundle
 supports — currently all 7: Bar Chart, Stacked Bar Chart, Line Chart,
@@ -113,8 +113,9 @@ reaching the compiler on every call.
 
 ## Vendored bundle
 
-`flintchart-shim.js` is vendored verbatim from flint-ntcharts
+`flintchart-shim.js` is vendored from flint-ntcharts
 (`js/dist/flintchart-shim.mjs`) — see `web/flintchart/PROVENANCE.txt`
 for the source commit and sha256. Re-vendor by running `make
-browser-shim` in flint-ntcharts and copying the output over both
-`web/flintchart/` and `cmd/booba-shim-assets/assets/flintchart/`.
+browser-shim` in flint-ntcharts, applying the namespace patch described in
+`web/flintchart/README.md`, and copying the result over both
+`web/flintchart/` and `cmd/ntshim-assets/assets/flintchart/`.

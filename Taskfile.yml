@@ -1,4 +1,4 @@
-# booba-shim - Copyright (c) 2026 Neomantra Corp
+# ntshim - Copyright (c) 2026 Neomantra Corp
 
 version: '3'
 
@@ -24,7 +24,7 @@ tasks:
   build-tool:
     desc: 'Build the asset tool binary'
     cmds:
-      - go build -o bin/booba-shim-assets ./cmd/booba-shim-assets
+      - go build -o bin/ntshim-assets ./cmd/ntshim-assets
 
   examples:
     desc: 'Build wasm for every example'
@@ -39,28 +39,28 @@ tasks:
     dir: examples/duckdb-sql
     cmds:
       - GOOS=js GOARCH=wasm go build -o app.wasm .
-      - go tool booba-shim-assets . --shim=duckdb
+      - go tool ntshim-assets . --shim=duckdb
 
   examples-duckdb-arrow:
     dir: examples/duckdb-arrow
     cmds:
       - GOOS=js GOARCH=wasm go build -o app.wasm .
-      - go tool booba-shim-assets . --shim=duckdb
+      - go tool ntshim-assets . --shim=duckdb
 
   examples-pdfium-render:
     dir: examples/pdfium-render
     cmds:
       - GOOS=js GOARCH=wasm go build -o app.wasm .
-      - go tool booba-shim-assets . --shim=pdfium
+      - go tool ntshim-assets . --shim=pdfium
 
   examples-flintchart-compile:
     dir: examples/flintchart-compile
     cmds:
       - GOOS=js GOARCH=wasm go build -o app.wasm .
-      - go tool booba-shim-assets . --shim=flintchart
+      - go tool ntshim-assets . --shim=flintchart
 
   examples-audio:
     dir: examples/audio
     cmds:
       - GOOS=js GOARCH=wasm go build -o app.wasm .
-      - go tool booba-shim-assets . --shim=audio
+      - go tool ntshim-assets . --shim=audio

@@ -11,7 +11,7 @@ import (
 	"image/png"
 	"syscall/js"
 
-	"github.com/NimbleMarkets/booba-shim/pdfium"
+	"nimbleterminal.dev/ntshim/pdfium"
 )
 
 //go:embed testdata/Example.pdf

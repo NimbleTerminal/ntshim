@@ -6,8 +6,8 @@
 // the bundle itself compiles and returns a well-formed envelope.
 //
 // Usage: node smoke.mjs   (run from this directory, after `task build`
-// or `go tool booba-shim-assets . --shim=flintchart` has populated
-// booba-shim/flintchart/flintchart-shim.js)
+// or `go tool ntshim-assets . --shim=flintchart` has populated
+// ntshim/flintchart/flintchart-shim.js)
 
 const sampleInput = JSON.stringify({
   data: {
@@ -26,8 +26,8 @@ const sampleInput = JSON.stringify({
   },
 });
 
-await import("./booba-shim/flintchart/flintchart-shim.js");
-const ns = globalThis.boobaShim.flintchart;
+await import("./ntshim/flintchart/flintchart-shim.js");
+const ns = globalThis.ntshim.flintchart;
 
 await ns.ready;
 

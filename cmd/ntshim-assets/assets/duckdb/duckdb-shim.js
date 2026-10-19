@@ -1,14 +1,14 @@
-// booba-shim/duckdb — JS bridge file
+// ntshim/duckdb — JS bridge file
 //
 // Loaded by consumer pages before their Go-WASM main runs. Sets
-// window.boobaShim.duckdb with the API the Go side expects. Reads Arrow
+// window.ntshim.duckdb with the API the Go side expects. Reads Arrow
 // IPC out of DuckDB-Wasm's native arrow.Table results and ships bytes
 // across the JS↔Go boundary.
 
 import * as duckdb from 'https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.32.0/+esm';
 import { tableToIPC } from 'https://cdn.jsdelivr.net/npm/apache-arrow@17.0.0/+esm';
 
-const NAMESPACE = (window.boobaShim = window.boobaShim || {});
+const NAMESPACE = (window.ntshim = window.ntshim || {});
 
 const connections = new Map();
 let nextHandle = 1;
@@ -39,7 +39,7 @@ async function bootstrap() {
 }
 
 async function open(dsn) {
-    if (!db) throw new Error('duckdb: bridge not bootstrapped (await boobaShim.duckdb.ready first)');
+    if (!db) throw new Error('duckdb: bridge not bootstrapped (await ntshim.duckdb.ready first)');
     const { path, opts } = parseDSN(dsn);
     const conn = await db.connect();
     if (path && path !== ':memory:') {

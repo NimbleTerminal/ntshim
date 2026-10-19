@@ -10,7 +10,7 @@ python3 -m http.server 8000
 
 The same `app.wasm` can be hosted with the standard Booba page. The program
 creates its own controls from Go and needs no shim script or custom HTML IDs.
-`go tool booba-shim-assets . --shim=audio` is optional and writes nothing.
+`go tool ntshim-assets . --shim=audio` is optional and writes nothing.
 
 Manual browser checklist (host tests do not verify audible playback):
 

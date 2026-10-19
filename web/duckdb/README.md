@@ -1,10 +1,10 @@
-# booba-shim/duckdb JS bridge
+# ntshim/duckdb JS bridge
 
 This directory ships in the asset tool. End users do not edit these files
-directly — they run `go tool booba-shim-assets <web-dir> --shim=duckdb`,
-which writes them to `<web-dir>/booba-shim/duckdb/`.
+directly — they run `go tool ntshim-assets <web-dir> --shim=duckdb`,
+which writes them to `<web-dir>/ntshim/duckdb/`.
 
-The bridge sets `window.boobaShim.duckdb` and a `ready` promise. The page
+The bridge sets `window.ntshim.duckdb` and a `ready` promise. The page
 must await that promise before instantiating `app.wasm`.
 
 Pinned dependencies (bump in `duckdb-shim.js`):

@@ -7,7 +7,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/NimbleMarkets/booba-shim/pdfium"
+	"nimbleterminal.dev/ntshim/pdfium"
 )
 
 func TestLoadReturnsErrNonJSPlatform(t *testing.T) {

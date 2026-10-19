@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/NimbleMarkets/booba-shim/flintchart"
+	"nimbleterminal.dev/ntshim/flintchart"
 )
 
 func TestNonJSStubs(t *testing.T) {

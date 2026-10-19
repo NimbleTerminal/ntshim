@@ -19636,7 +19636,7 @@ function compileToECharts(input) {
 
 // src/entry-browser.ts
 var VERSION = true ? "flint-chart@0.5.1" : "dev";
-var NAMESPACE = globalThis.boobaShim = globalThis.boobaShim ?? {};
+var NAMESPACE = globalThis.ntshim = globalThis.ntshim ?? {};
 NAMESPACE.flintchart = {
   compile: (inputJSON) => compileToNtSpec(inputJSON),
   version: `flint-ntcharts ${VERSION}`,

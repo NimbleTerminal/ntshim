@@ -14,13 +14,13 @@ var (
 	bridgeVal  js.Value
 )
 
-// ensureReady resolves window.boobaShim.pdfium and awaits its ready
+// ensureReady resolves window.ntshim.pdfium and awaits its ready
 // promise. Idempotent: the PDFium wasm download/instantiate happens
 // once per process. Returns ErrBridgeMissing when the page did not
 // load pdfium-shim.js before the WASM main ran.
 func ensureReady() (js.Value, error) {
 	bridgeOnce.Do(func() {
-		root := js.Global().Get("boobaShim")
+		root := js.Global().Get("ntshim")
 		if root.IsUndefined() {
 			bridgeErr = ErrBridgeMissing
 			return

@@ -6,17 +6,17 @@ import (
 	"syscall/js"
 )
 
-// bridge returns the window.boobaShim.duckdb object. It panics if the
+// bridge returns the window.ntshim.duckdb object. It panics if the
 // page did not load duckdb-shim.js before the WASM main ran — that's
 // strictly a setup error and there is no useful recovery.
 func bridge() js.Value {
-	root := js.Global().Get("boobaShim")
+	root := js.Global().Get("ntshim")
 	if root.IsUndefined() {
-		panic("booba-shim/duckdb: window.boobaShim is undefined; load duckdb-shim.js before app.wasm")
+		panic("ntshim/duckdb: window.ntshim is undefined; load duckdb-shim.js before app.wasm")
 	}
 	shim := root.Get("duckdb")
 	if shim.IsUndefined() {
-		panic("booba-shim/duckdb: window.boobaShim.duckdb is undefined; load duckdb-shim.js before app.wasm")
+		panic("ntshim/duckdb: window.ntshim.duckdb is undefined; load duckdb-shim.js before app.wasm")
 	}
 	return shim
 }

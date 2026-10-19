@@ -1,4 +1,4 @@
-# booba-shim/duckdb — database/sql example
+# ntshim/duckdb — database/sql example
 
 ```sh
 task serve

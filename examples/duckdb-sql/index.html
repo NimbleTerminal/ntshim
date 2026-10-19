@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>booba-shim/duckdb — database/sql tour</title>
+<title>ntshim/duckdb — database/sql tour</title>
 <style>
 body { font-family: monospace; margin: 24px; }
 #out { white-space: pre-wrap; }
@@ -10,12 +10,12 @@ pre { background: #f3f3f3; padding: 8px; border-radius: 4px; }
 </style>
 </head>
 <body>
-<h1>booba-shim/duckdb — database/sql tour</h1>
+<h1>ntshim/duckdb — database/sql tour</h1>
 <div id="out">loading…<br/></div>
 <script src="wasm_exec.js"></script>
 <script type="module">
-  import './booba-shim/duckdb/duckdb-shim.js';
-  await window.boobaShim.duckdb.ready;
+  import './ntshim/duckdb/duckdb-shim.js';
+  await window.ntshim.duckdb.ready;
   const go = new Go();
   const wasm = await WebAssembly.instantiateStreaming(fetch('app.wasm'), go.importObject);
   go.run(wasm.instance);

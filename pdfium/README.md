@@ -1,4 +1,4 @@
-# booba-shim/pdfium
+# ntshim/pdfium
 
 Render PDFs in Go-WASM programs via [@embedpdf/pdfium](https://www.embedpdf.com/docs/pdfium)
 (a PDFium WebAssembly build). Loads documents from memory and
@@ -23,7 +23,7 @@ img, err := doc.RenderPage(ctx, 0, 144) // *image.RGBA at 144 DPI
 ```html
 <script src="wasm_exec.js"></script>
 <script type="module">
-  import './booba-shim/pdfium/pdfium-shim.js';
+  import './ntshim/pdfium/pdfium-shim.js';
   const go = new Go();
   const wasm = await WebAssembly.instantiateStreaming(fetch('app.wasm'), go.importObject);
   go.run(wasm.instance);
@@ -31,9 +31,9 @@ img, err := doc.RenderPage(ctx, 0, 144) // *image.RGBA at 144 DPI
 ```
 
 The Go side awaits the bridge's `ready` promise on first `Load`, so the
-page does not need to await it (unlike booba-shim/duckdb).
+page does not need to await it (unlike ntshim/duckdb).
 
-**Assets:** `go tool booba-shim-assets <web-dir> --shim=pdfium`
+**Assets:** `go tool ntshim-assets <web-dir> --shim=pdfium`
 
 ## Semantics
 

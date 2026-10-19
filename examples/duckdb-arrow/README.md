@@ -1,4 +1,4 @@
-# booba-shim/duckdb — native Arrow example
+# ntshim/duckdb — native Arrow example
 
 ```sh
 task serve

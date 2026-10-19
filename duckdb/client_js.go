@@ -25,7 +25,7 @@ type Client struct {
 //	<path>?key=val&key=val   or   ":memory:"
 //
 // Files referenced by <path> must be pre-registered via the JS bridge
-// (window.boobaShim.duckdb.registerFileURL or registerFileBuffer).
+// (window.ntshim.duckdb.registerFileURL or registerFileBuffer).
 func Open(ctx context.Context, dsn string) (*Client, error) {
 	_ = ctx // ctx is reserved for cancellation in a future release.
 	res, err := awaitPromise(bridge().Call("open", dsn))

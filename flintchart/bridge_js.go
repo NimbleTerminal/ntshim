@@ -14,13 +14,13 @@ var (
 	bridgeVal  js.Value
 )
 
-// ensureReady resolves window.boobaShim.flintchart and awaits its ready
+// ensureReady resolves window.ntshim.flintchart and awaits its ready
 // promise. Idempotent: the bundle only needs to be resolved once per
 // process. Returns ErrBridgeMissing when the page did not load
 // flintchart-shim.js before the WASM main ran.
 func ensureReady() (js.Value, error) {
 	bridgeOnce.Do(func() {
-		root := js.Global().Get("boobaShim")
+		root := js.Global().Get("ntshim")
 		if root.IsUndefined() {
 			bridgeErr = ErrBridgeMissing
 			return
