@@ -3,6 +3,13 @@
 All notable changes to ntshim are documented in this file. Releases through
 v0.5.0 below belong to the original booba-shim module and repository.
 
+## `v0.6.1` - 2026-10-28
+
+ * Raise the minimum Go version to 1.26.0.
+ * Update Apache Arrow Go to v18.8.0 and refresh indirect Go dependencies.
+ * Update CI to use `actions/checkout`, `actions/setup-go`, and
+   `actions/setup-node` v7.
+
 ## `v0.6.0` - 2026-10-19
 
  * Rename booba-shim to ntshim, using the Go module `nimbleterminal.dev/ntshim`
