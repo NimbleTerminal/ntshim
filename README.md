@@ -13,7 +13,7 @@ Browser shims that let Go-WASM TUIs hosted by [go-booba](https://github.com/Nimb
 
 ## Install
 
-With Go 1.25 or newer:
+With Go 1.26 or newer:
 
 ```sh
 go get nimbleterminal.dev/ntshim@v0.6.0
